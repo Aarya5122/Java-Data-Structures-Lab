@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class StackQueue
+public class StackArray
 {
 	public static void main(String[] args) {
 		Scanner rd= new Scanner(System.in);
