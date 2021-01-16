@@ -1,3 +1,4 @@
+ 
 import java.util.Scanner;
 
 public class QueueArray{
@@ -32,7 +33,7 @@ public class QueueArray{
 
 class Queue{
    int rear=-1;
-   int front=-1;
+   int front=0;
    int size;
    int q[];
    
@@ -55,34 +56,22 @@ class Queue{
    public void enqueue(int data){
       if(isFull()) System.out.println("Queue Overflow");
       else{
-         if(rear==-1&&front==-1){
-            ++rear;
-            ++front;
-            q[rear]=data;
-         }
-         else{
-            q[++rear]=data;
-         }
+         q[++rear]=data;
       }
    }
    
    public void dequeue(){
-      if(rear==-1) System.out.println("Queue Underflow");
-      if(rear==front){
-         rear--;
-         front--;
-         System.out.printf("Element poped is: "+ --rear);
-      }
+      if(rear==-1||front>rear) System.out.println("Queue Underflow");
       else{
-         System.out.printf("Element poped is: "+ --rear);
+         System.out.printf("Element poped is: "+ q[front++]);
       }
    }
    
    public void display(){
-      if(rear==-1)System.out.println("Queue is empty!");
+      if(rear==-1||front>rear)System.out.println("Queue is empty!");
       else{
          System.out.print("Elements in queue: ");
-         for(int i=front; i<=rear; i++) System.out.print(q[i]+" ");
+         for(int i=rear; i>=front; i--) System.out.print(q[i]+" ");
       }
    }
 }
